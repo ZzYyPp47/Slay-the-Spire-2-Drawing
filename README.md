@@ -61,7 +61,7 @@
 ### 1. 克隆仓库
 
 ```bash
-git clone https://github.com/你的用户名/SpirePainter2.git
+git clone https://github.com/SKYFIRE5836/SpirePainter2.git
 cd SpirePainter2
 
 ```
