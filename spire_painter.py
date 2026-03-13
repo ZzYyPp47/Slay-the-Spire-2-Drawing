@@ -540,7 +540,8 @@ class SpirePainterApp:
 
     def draw_logic(self, rx, ry, rw, rh, img_path):
         global abort_drawing
-        abort_drawing = False 
+        abort_drawing = False
+        use_left = (self.mouse_button_var.get() == "left")
         
         time.sleep(1) 
         
@@ -567,9 +568,12 @@ class SpirePainterApp:
             start_x = int(offset_x + contour[0][0][0] * scale)
             start_y = int(offset_y + contour[0][0][1] * scale)
             move_mouse(start_x, start_y)
-            time.sleep(0.005) 
-            
-            right_click_down()
+            time.sleep(0.005)
+
+            if use_left:
+                left_click_down()
+            else:
+                right_click_down()
             time.sleep(0.005) 
             
             for point in contour[1::current_step]:
@@ -579,9 +583,12 @@ class SpirePainterApp:
                 px = int(offset_x + point[0][0] * scale)
                 py = int(offset_y + point[0][1] * scale)
                 move_mouse(px, py)
-                time.sleep(0.002) 
-            
-            right_click_up()
+                time.sleep(0.002)
+
+            if use_left:
+                left_click_down()
+            else:
+                right_click_down()
             time.sleep(0.005) 
         
         if abort_drawing:
